@@ -1,0 +1,120 @@
+.techs {
+    background-color: #272727;
+    padding: 110px 70px 100px 70px;
+}
+
+@media screen and (max-width: 1147px) {
+    .techs {
+        padding: 90px 50px 90px 50px;
+    }
+}
+
+@media screen and (max-width: 600px) {
+    .techs {
+        padding: 70px 18px 70px 18px;
+    }
+}
+
+.techs__title-container {
+    border-bottom: 1px solid #dadada;
+}
+
+@media screen and (max-width: 600px) {
+    .techs__title-container {
+        border-bottom: 1px solid black;
+    }
+}
+
+.techs__title {
+    margin: 0 0 23px 0;
+    font-size: 22px;
+    line-height: 27px;
+}
+
+.techs__text-container {
+    padding: 70px 345px 100px 345px;
+    text-align: center;
+    letter-spacing: -0.04em;
+}
+
+@media screen and (max-width: 1147px) {
+    .techs__text-container {
+        padding: 80px;
+    }
+}
+
+@media screen and (max-width: 600px) {
+    .techs__text-container {
+        padding: 60px 18px 50px 18px;
+    }
+}
+
+.techs__subtitle {
+    margin: 0 0 25px 0;
+    font-size: 50px;
+    line-height: 58px;
+}
+
+@media screen and (max-width: 600px) {
+    .techs__subtitle {
+        font-size: 30px;
+        line-height: 36px;
+    }
+}
+
+.techs__text {
+    line-height: 18px;
+    font-size: 12px;
+}
+
+@media screen and (max-width: 600px) {
+    .techs__text {
+        font-size: 11px;
+        line-height: 16px;
+    }
+}
+
+.techs__container {
+    width: 65%;
+    margin: auto;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+@media screen and (max-width: 1147px) {
+    .techs__container {
+        width: 100%;
+    }
+}
+
+@media screen and (max-width: 600px) {
+    .techs__container {
+        margin: auto;
+        width: 67%;
+        display: flex;
+        flex-direction: row;
+        flex-wrap: wrap;
+    }
+}
+
+.techs__block {
+    font-size: 12px;
+    width: 13%;
+    height: 60px;
+    background-color: #303030;
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+@media screen and (max-width: 600px) {
+    .techs__block {
+        width: 84px;
+        margin: 5px;
+        display: flex;
+        flex-direction: row;
+        flex-wrap: wrap;
+    }
+}

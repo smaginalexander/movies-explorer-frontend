@@ -1,0 +1,83 @@
+.searchForm {
+    padding: 145px 70px 45px 70px;
+    background-color: #202020;
+}
+
+@media screen and (max-width: 768px) {
+    .searchForm {
+        padding: 150px 30px 60px 30px;
+    }
+}
+
+@media screen and (max-width: 320px) {
+    .searchForm {
+        padding: 170px 14px 50px 14px;
+    }
+}
+
+.searchForm__form {
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    border-bottom: 1px solid #424242;
+    justify-content: space-between;
+}
+.searchForm__lupIcon {
+    margin-bottom: 15px;
+}
+
+@media screen and (max-width: 320px) {
+    .searchForm__lupIcon {
+        display: none;
+    }
+}
+
+.searchForm__input {
+    text-align: center;
+    width: 75%;
+    background-color: transparent;
+    border: none;
+    outline: none;
+    color: white;
+    font-family: Inter;
+    font-size: 28px;
+}
+
+@media screen and (max-width: 320px) {
+    .searchForm__input {
+        text-align: start;
+        font-size: 18px;
+    }
+}
+
+.searchForm__button {
+    margin-bottom: 15px;
+    width: 80px;
+    height: 34px;
+    cursor: pointer;
+    outline: none;
+    border: none;
+    background: #4285f4;
+    border-radius: 48px;
+    padding-top: 6px;
+}
+.searchForm__container {
+    padding-top: 30px;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+}
+.searchForm__text {
+    margin-left: 12px;
+    margin-right: 45px;
+    font-size: 14px;
+    line-height: 18px;
+}
+
+@media screen and (max-width: 320px) {
+    .searchForm__text {
+        font-size: 11px;
+        margin-right: 0;
+    }
+}

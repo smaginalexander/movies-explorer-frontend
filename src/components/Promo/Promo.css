@@ -1,0 +1,125 @@
+.promo {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    box-sizing: border-box;
+    background-color: #073042;
+    width: 100%;
+    padding: 145px 70px 75px 70px;
+}
+
+@media screen and (max-width: 900px) {
+    .promo {
+        align-items: center;
+        padding: 215px 44px 75px 44px;
+    }
+}
+
+@media screen and (max-width: 500px) {
+    .promo {
+        align-items: center;
+        padding: 145px 10px 40px 10px;
+    }
+}
+
+.promo__container {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+@media screen and (max-width: 900px) {
+    .promo__container {
+        flex-direction: column-reverse;
+    }
+}
+
+.promo__text-container {
+    width: 57%;
+    color: white;
+    font-family: Inter;
+    font-style: normal;
+    font-weight: normal;
+}
+
+@media screen and (max-width: 900px) {
+    .promo__text-container {
+        width: 100%;
+        text-align: center;
+    }
+}
+
+.promo__title {
+    font-size: 50px;
+    line-height: 58px;
+}
+
+@media screen and (max-width: 900px) {
+    .promo__title {
+        margin: 20px 0 20px 0;
+        font-size: 40px;
+    }
+}
+
+@media screen and (max-width: 500px) {
+    .promo__title {
+        margin: 44px 0 20px 0;
+        font-size: 30px;
+        line-height: 38px;
+    }
+}
+
+.promo__subtitle {
+    color: #ffffff81;
+    width: 37%;
+    font-size: 13px;
+    line-height: 16px;
+}
+@media screen and (max-width: 900px) {
+    .promo__subtitle {
+        margin: auto;
+        width: 35%;
+    }
+}
+
+@media screen and (max-width: 500px) {
+    .promo__subtitle {
+        margin: auto;
+        width: 81%;
+    }
+}
+
+.promo__image {
+    width: 310px;
+    height: 310px;
+    margin: auto;
+}
+
+@media screen and (max-width: 500px) {
+    .promo__image {
+        width: 210px;
+        height: 210px;
+    }
+}
+
+.promo__button {
+    margin-top: 90px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 129px;
+    height: 36px;
+    opacity: 0.6;
+    border: 1px solid #ffffff;
+    box-sizing: border-box;
+    border-radius: 3px;
+}
+
+.promo__link {
+    text-decoration: none;
+    color: white;
+    font-family: Inter;
+    font-style: normal;
+    font-size: 12px;
+    line-height: 16px;
+}
