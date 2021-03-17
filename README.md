@@ -1,5 +1,5 @@
 # Getting Started with Create React App
-
+## smag.students.nomoredomains.work - домен фронтенд
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
 ## Available Scripts
