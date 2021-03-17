@@ -5,6 +5,9 @@
     position: relative;
     border-radius: 20px;
 }
+.checkbox__disabled {
+    background-color: #a1a1a1;
+}
 
 .checkbox__label {
     display: block;

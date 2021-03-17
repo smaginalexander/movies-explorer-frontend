@@ -137,4 +137,9 @@
     font-size: 14px;
     text-decoration: none;
     color: #ffffff;
+    transition: opacity 0.4s;
+}
+
+.aboutMe__link:hover {
+    opacity: 0.6;
 }

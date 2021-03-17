@@ -1,7 +1,7 @@
 import React from 'react';
 import './Portfolio.css';
 import arrow from '../../images/arrow.svg'
-import { Link } from 'react-router-dom';
+
 function Portfolio() {
     return (
         <section className="portfolio">

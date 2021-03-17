@@ -23,13 +23,13 @@ function Menu() {
                         <div className="header__line"></div>
                     </div>
                     <div>
-                        <p className="header__text">Главная</p>
-                        <p className="header__text">Фильмы</p>
-                        <p className="header__text">Сохранённые фильмы</p>
+                        <Link to="/" onClick={closeMenu}><p className="header__text">Главная</p></Link>
+                        <Link to="/movies" onClick={closeMenu}><p className="header__text">Фильмы</p></Link>
+                        <Link to="/saved-movies" onClick={closeMenu}><p className="header__text">Сохранённые фильмы</p></Link>
                     </div>
                     <div className="header__landing-container">
-                        <p className="header__text header__text_type_profile">Аккаунт</p>
-                        <Link className="header__link-profile">
+                        <Link to="/profile" onClick={closeMenu}><p className="header__text header__text_type_profile">Аккаунт</p></Link>
+                        <Link to="/profile" onClick={closeMenu} className="header__link-profile">
                             <img className="header__icon-man" src={profileIcon} alt="Иконка человека" />
                         </Link>
                     </div>
