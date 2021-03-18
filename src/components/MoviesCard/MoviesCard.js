@@ -16,7 +16,7 @@ function MoviesCard(props) {
             director: props.card.director,
             duration: props.card.duration,
             year: props.card.year,
-            description: 'В конце',
+            description: 'описание фильма',
             image: `https://api.nomoreparties.co${props.card.image.url}`,
             trailer: props.card.trailerLink,
             thumbnail: `https://api.nomoreparties.co${props.card.image.formats.thumbnail.url}`,

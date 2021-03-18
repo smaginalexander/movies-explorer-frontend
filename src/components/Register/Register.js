@@ -89,10 +89,9 @@ function Register(props) {
                 <div className="register__button-container">
                     <span className="register__error">{props.errorMessage}</span>
                     <button
-                        // disabled={formIsValid}
-                        className={formIsValid ? "register__button" : "register__button_type_disabled"}>
-                        Зарегистрироваться
-                        </button>
+                        className={formIsValid ? "register__button" : "register__button_type_disabled"}
+                        disabled={!formIsValid}
+                    >Зарегистрироваться</button>
                 </div>
                 <p className="register__text">Уже зарегистрированы?
                     <Link to="/signin" className="Register__link">Войти</Link>

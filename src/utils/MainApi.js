@@ -1,4 +1,5 @@
 const token = localStorage.getItem("jwt")
+console.log(token);
 export class MainApi {
     constructor(config) {
         this._url = config.url;
@@ -42,7 +43,6 @@ export class MainApi {
             })
             .then(this._checkResult)
     }
-
     createMovie({ country, director, duration, year, description, image, trailer, thumbnail, nameEN, nameRU, movieId }) {
         return fetch(`${this._url}/movies`, {
             method: 'POST',

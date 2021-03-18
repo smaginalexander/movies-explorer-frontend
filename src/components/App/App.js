@@ -62,62 +62,87 @@ function App() {
         }
       })
   }
-
+  //фильтр короткометражек
   const filterFlims = () => {
     if (!isFilter) {
-      const newFilmsList = cards.filter(item => item.duration <= 40)
-      const newSavedFilmsList = savedCards.filter(item => item.duration <= 40)
+      const duration = 40;
+      const newFilmsList = cards.filter(item => item.duration <= duration)
+      const newSavedFilmsList = savedCards.filter(item => item.duration <= duration)
       setCards(newFilmsList);
       setSavedCards(newSavedFilmsList)
       setIsFilter(true)
     } else {
-      mainApi.getSavedMovies()
-        .then(res => setSavedCards(res))
-        .catch(err => console.log(err))
-      moviesApi.getMovies()
-        .then(res => setCards(res))
-        .catch(err => console.log(err))
-      setCards(cards)
-      setSavedCards(savedCards)
+      setCards(JSON.parse(localStorage.getItem('movies')))
+      setSavedCards(JSON.parse(localStorage.getItem('savedMovies')));
       setIsFilter(false)
     }
   }
-
-  const onSearchSubmit = (searchMovie) => {
-    if (location.pathname === '/saved-movies') {
-      setPreloaderIsActive(true)
-      mainApi.getSavedMovies()
-        .then((savedMovies) => {
-          const foundFilms = savedMovies.filter
-            (item => item.nameRU.toLowerCase().includes(searchMovie.toLowerCase())
-              || item.nameEN.toLowerCase().includes(searchMovie.toLowerCase())
-            )
-          setSavedCards(foundFilms);
-        })
-        .catch(() => {
-          setErrorMessage('Во время запроса произошла ошибка.Возможно, проблема с соединением или сервер недоступен. Подождите немного и попробуйте ещё раз');
-        })
-        .finally(() => {
-          setPreloaderIsActive(false)
-        })
+  //вывод дефолтных фильмов
+  const getAllMovies = () => {
+    setPreloaderIsActive(true)
+    moviesApi.getMovies().then(res => {
+      localStorage.setItem('movies', JSON.stringify(res))
+    }).catch(() => {
+      setErrorMessage('Во время запроса произошла ошибка.Возможно, проблема с соединением или сервер недоступен. Подождите немного и попробуйте ещё раз');
+    })
+      .finally(() => {
+        setPreloaderIsActive(false)
+      })
+  }
+  //вывод сохраненных фильмов
+  const getSavedMoviesList = () => {
+    setPreloaderIsActive(true)
+    mainApi.getSavedMovies()
+      .then((savedMovies) => {
+        const omnerSavedMovies = savedMovies.filter(item => item.owner === currentUser._id)
+        localStorage.setItem('savedMovies', JSON.stringify(omnerSavedMovies))
+        const allSavedMovies = JSON.parse(localStorage.getItem('savedMovies'))
+        setSavedCards(allSavedMovies);
+      })
+      .catch(() => {
+        setErrorMessage('Во время запроса произошла ошибка.Возможно, проблема с соединением или сервер недоступен. Подождите немного и попробуйте ещё раз');
+      })
+      .finally(() => {
+        setPreloaderIsActive(false)
+      })
+  }
+  // проверить посещался ли сайт ранее
+  const allreadyVisitedPage = () => {
+    if (localStorage.getItem('visited')) {
+      setCards(JSON.parse(localStorage.getItem('movies')))
+      setSavedCards(JSON.parse(localStorage.getItem('savedMovies')));
     } else {
-      setPreloaderIsActive(true)
-      moviesApi.getMovies()
-        .then((res) => {
-          const foundCorrectFilms = res.filter((item) => item.nameEN !== null);
-          const foundFilms = foundCorrectFilms.filter
-            (item => item.nameRU.toLowerCase().includes(searchMovie.toLowerCase())
-              || item.nameEN.toLowerCase().includes(searchMovie.toLowerCase())
-            )
-          setCards(foundFilms)
-          setErrorMessage('')
-        })
-        .catch(() => {
-          setErrorMessage('Во время запроса произошла ошибка.Возможно, проблема с соединением или сервер недоступен. Подождите немного и попробуйте ещё раз');
-        })
-        .finally(() => {
-          setPreloaderIsActive(false)
-        })
+      setCards([])
+      setSavedCards([]);
+    }
+  }
+
+  React.useEffect(() => {
+    getAllMovies();
+    getSavedMoviesList();
+    allreadyVisitedPage();
+    // eslint-disable-next-line
+  }, []);
+
+  // поиск фильмов
+  const onSearchSubmit = (searchMovie) => {
+    localStorage.setItem('visited', true)
+    if (location.pathname === '/saved-movies') {
+      const allSavedMovies = JSON.parse(localStorage.getItem('savedMovies'))
+      const foundFilms = allSavedMovies.filter
+        (item => item.nameRU.toLowerCase().includes(searchMovie.toLowerCase())
+          || item.nameEN.toLowerCase().includes(searchMovie.toLowerCase())
+        )
+      setSavedCards(foundFilms);
+    } else {
+      const allMovies = JSON.parse(localStorage.getItem('movies'))
+      const foundCorrectFilms = allMovies.filter((item) => item.nameEN !== null);
+      const foundFilms = foundCorrectFilms.filter
+        (item => item.nameRU.toLowerCase().includes(searchMovie.toLowerCase())
+          || item.nameEN.toLowerCase().includes(searchMovie.toLowerCase())
+        )
+      setCards(foundFilms)
+      setErrorMessage('');
     }
   }
 
@@ -172,26 +197,11 @@ function App() {
   const exitFromPriofile = () => {
     history.push('/signin')
     setLoggedIn(false);
-    localStorage.removeItem('jwt')
+    localStorage.clear();
     setCurrentUser({
       name: '',
       email: ''
     })
-  }
-  //вывод сохраненных фильмов
-  const getSavedMoviesList = () => {
-    setPreloaderIsActive(true)
-    mainApi.getSavedMovies()
-      .then((savedMovies) => {
-        const omnerSavedMovies = savedMovies.filter(item => item.owner === currentUser._id)
-        setSavedCards(omnerSavedMovies);
-      })
-      .catch(() => {
-        setErrorMessage('Во время запроса произошла ошибка.Возможно, проблема с соединением или сервер недоступен. Подождите немного и попробуйте ещё раз');
-      })
-      .finally(() => {
-        setPreloaderIsActive(false)
-      })
   }
 
   // сохранить фильм
@@ -207,10 +217,15 @@ function App() {
     const cardId = card.id
     if (location.pathname === '/movies') {
       const isIsaveddMovie = savedCards.find((item) => item.movieId === cardId);
-      mainApi.deleteMovie(isIsaveddMovie._id)
-        .then(() => {
-          getSavedMoviesList();
-        })
+      if (isIsaveddMovie) {
+        mainApi.deleteMovie(isIsaveddMovie._id)
+          .then(() => {
+            getSavedMoviesList();
+          })
+      } return
+    } else if (card === undefined) {
+      console.log('с этой карточкой что-то не так');
+      return
     } else {
       mainApi.deleteMovie(card._id)
         .then(() => {

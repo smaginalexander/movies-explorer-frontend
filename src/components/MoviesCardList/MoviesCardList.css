@@ -19,8 +19,15 @@
 
 .moviesCardList__elements {
     display: grid;
-    grid-template-columns: repeat(3, 1fr);
+    grid-template-columns: repeat(4, 1fr);
     gap: 37px 24px;
+}
+
+@media screen and (max-width: 1280px) {
+    .moviesCardList__elements {
+        grid-template-columns: repeat(3, 1fr);
+        gap: 30px;
+    }
 }
 
 @media screen and (max-width: 900px) {

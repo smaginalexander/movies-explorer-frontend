@@ -95,3 +95,9 @@
     font-size: 13px;
     color: #000;
 }
+
+.profile__message {
+    color: rgb(96, 244, 255);
+    font-size: 13px;
+    text-align: center;
+}

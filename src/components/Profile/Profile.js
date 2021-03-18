@@ -9,6 +9,7 @@ function Profile(props) {
     const [email, setEmail] = useState(currentUser.email);
     const [errorName, setErrorName] = React.useState(' ')
     const [errorEmail, setErrorEmail] = React.useState(' ')
+    const [sucsessMessage, setSucsessMessage] = React.useState('')
     const [formIsValid, setFormIsValid] = React.useState(false)
     const ckeckValidation = () => {
         if (errorName === '' && errorEmail === '') {
@@ -17,6 +18,7 @@ function Profile(props) {
             setFormIsValid(false)
         }
     }
+
     React.useEffect(() => {
         ckeckValidation();
     }, [errorName, errorEmail])
@@ -35,6 +37,7 @@ function Profile(props) {
             setErrorName('Имя может содержать только латиницу, пробел или дефис.')
         } else {
             setErrorName('')
+            setFormIsValid(true)
         }
     }
 
@@ -45,12 +48,15 @@ function Profile(props) {
             setErrorEmail('Некорректный email.')
         } else {
             setErrorEmail('')
+            setFormIsValid(true)
         }
     }
 
     const handleSubmit = (e) => {
         e.preventDefault();
         props.handleUpdateUser({ name, email })
+        setSucsessMessage('профиль успешно сохранен')
+
     }
 
     return (
@@ -68,7 +74,8 @@ function Profile(props) {
                 </div>
                 <span className={`register__error ${errorEmail === '' ? "register__error_hidden" : ''}`}>{errorEmail}</span>
                 <div className="register__button-container">
-                    <button className={formIsValid ? "profile__button" : "profile__button"}>Редактировать</button>
+                    <span className="profile__message">{sucsessMessage}</span>
+                    <button disabled={!formIsValid} className="profile__button">Редактировать</button>
                     <Link to="/signin" onClick={props.exitFromPriofile} className="profile__link">Выйти из аккаунта</Link>
                 </div>
 

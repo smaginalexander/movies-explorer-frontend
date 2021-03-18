@@ -61,7 +61,7 @@ function Login(props) {
                 <div className="register__button-container">
                     <span className="register__error">{props.errorMessage}</span>
                     <button
-                        // disabled={formIsValid}
+                        disabled={!formIsValid}
                         className={formIsValid ? "register__button" : "register__button_type_disabled"}>
                         Войти
                         </button>

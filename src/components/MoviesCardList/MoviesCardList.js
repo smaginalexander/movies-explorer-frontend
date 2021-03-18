@@ -1,14 +1,31 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { Route } from 'react-router-dom';
 import './MoviesCardList.css';
 import MoviesCard from '../MoviesCard/MoviesCard';
 import SavedMoviesHeader from '../SavedMoviesHeader/SavedMoviesHeader';
 
 function MoviesCardList(props) {
-    const [count, setCount] = React.useState(3);
+    const [count, setCount] = React.useState(0);
+    const [addMoreCards, setAddMoreCards] = React.useState(0);
     const addMoreMovies = () => {
-        setCount(count + 3)
+        setCount(count + addMoreCards)
     }
+    const displayWidthCheck = () => {
+        const display = window.innerWidth
+        if (display > 900) {
+            setCount(12)
+            setAddMoreCards(3)
+        } else if (display > 750) {
+            setCount(8)
+            setAddMoreCards(2)
+        } else if (display < 750) {
+            setCount(5)
+            setAddMoreCards(2)
+        }
+    }
+    React.useEffect(() => {
+        displayWidthCheck();
+    }, [])
 
     return (
         <>
