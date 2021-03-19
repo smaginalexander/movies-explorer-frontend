@@ -1,0 +1,6 @@
+@import "./vendor/fonts/fonts.css";
+
+.page {
+    color: white;
+    font-family: Inter;
+}
