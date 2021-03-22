@@ -1,6 +1,5 @@
 import React from 'react';
 import './Promo.css';
-import { Link } from 'react-router-dom';
 import earth from '../../images/earth.svg';
 
 
@@ -16,7 +15,7 @@ function Promo() {
                 <img className="promo__image" src={earth} alt="земной шар" />
             </div>
             <div className="promo__button">
-                <Link to="/" className="promo__link">Узнать больше</Link>
+                <a href="#isme" className="promo__link">Узнать больше</a>
             </div>
         </section >
     )

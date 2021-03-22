@@ -1,22 +1,22 @@
 import React from 'react';
 import './AboutMe.css';
-import portrait from '../../images/portrait.png';
+import portrait from '../../images/avatar.jpg';
 
 function AboutMe() {
     return (
-        <section className="aboutMe">
+        <section id="isme" className="aboutMe">
             <div className="aboutMe__title-container">
                 <p className="aboutMe__title">Студент</p>
             </div>
             <div className="aboutMe__container">
                 <div className="aboutMe__text-container">
                     <div>
-                        <p className="aboutMe__name">Виталий</p>
-                        <p className="aboutMe__subtitle">Фронтенд-разработчик, 30 лет</p>
-                        <p className="aboutMe__text">Я родился и живу в Саратове, закончил факультет экономики СГУ.
-                        У меня есть жена и дочь. Я люблю слушать музыку, а ещё увлекаюсь бегом. Недавно начал кодить.
-                        С 2015 года работал в компании «СКБ Контур». После того, как прошёл курс по веб-разработке,
-                    начал заниматься фриланс-заказами и ушёл с постоянной работы.</p>
+                        <p className="aboutMe__name">Александр</p>
+                        <p className="aboutMe__subtitle">Фронтенд-разработчик, 26 лет</p>
+                        <p className="aboutMe__text">Я родился и живу в Москве, закончил факультет менеджмента МГУПП.
+                        Прошел службу в армии. Я люблю слушать музыку, а ещё увлекаюсь фитнесом. Недавно начал кодить.
+                        В 2020 году поступил на курс Яндекс.Практикум(веб-разработчик) и успешно его завершил.
+                        </p>
                     </div>
                     <div className="aboutMe_links">
                         <a
