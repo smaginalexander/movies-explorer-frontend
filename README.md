@@ -1,5 +1,5 @@
 # Getting Started with Create React App
-## Посмотреть проект - smag.students.nomoredomains.work
+
 Фронтенд со следующими возможностями: авторизации и регистрации пользователей, операции с фильмами и профилем.
 Подключение к собственному API - https://github.com/smaginalexander/movies-explorer-api
 
